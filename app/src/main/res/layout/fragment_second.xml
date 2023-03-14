@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+<!--<TableRow-->
+<!--    android:id="@+id/row0"-->
+<!--    android:gravity="center_horizontal"-->
+<!--    >-->
+<!--    <TextView-->
+<!--        android:id="@+id/title1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:fontFamily="monospace"-->
+<!--        android:text="@string/title1"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
+<!--</TableRow>-->
+    <TableRow
+        android:id="@+id/row1"
+        android:layout_width="fill_parent"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/sourceNet"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:text="Source Net"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/sourcePort"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:text="Source Port"
+            android:textSize="12sp" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/destNet"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:text="Destination Net"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/destPort"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:text="Destination Port"
+            android:textSize="12sp" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/row3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Message"
+            android:textSize="14sp" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/row4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="ClassType"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="SID"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Priority"
+            android:textSize="12sp" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/row5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp">
+
+        <Button
+            android:id="@+id/sendSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send" />
+    </TableRow>
+</TableLayout>
