@@ -1,14 +1,16 @@
-package com.example.snortdroid;
+package com.example.snortdroid.zeek_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TCPActivity extends AppCompatActivity {
+import com.example.snortdroid.R;
+
+public class ZeekActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tcpactivity);
+        setContentView(R.layout.activity_zeek);
     }
 }

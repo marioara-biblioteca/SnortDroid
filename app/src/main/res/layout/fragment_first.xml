@@ -3,50 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment"
-    android:gravity="left"
+    tools:context=".snort_acivities.FirstFragment"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-<!--    <TextView-->
-<!--        android:id="@+id/title1"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        android:fontFamily="monospace"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:text="@string/title1"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/title2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="monospace"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:text="@string/title2"-->
-<!--        />-->
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
+        android:paddingRight="20dp"
         android:text="Action" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Protocol" />
+</LinearLayout>
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <Spinner
         android:id="@+id/action"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:paddingRight="20dp"
         android:paddingTop="50dp"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="Protocol" />
 
     <Spinner
         android:id="@+id/protocol"
@@ -54,23 +42,44 @@
         android:layout_height="wrap_content"
         android:paddingTop="50dp"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="Rev" />
 
-    <Spinner
-        android:id="@+id/rev"
-        android:layout_width="100dp"
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/rev"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="rev"
+            android:paddingTop="50dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"/>
+        android:paddingTop="30dp">
+        <EditText
+            android:id="@+id/contentMatch"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:gravity="left"
+            android:hint="Content Match"
+            android:textSize="14sp"></EditText>
 
+        <EditText
+            android:id="@+id/offset"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:hint="offset"
+            android:textSize="14sp" />
+</LinearLayout>
     <Button
         android:id="@+id/sendFirst"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/send" />
+
 
 </LinearLayout>

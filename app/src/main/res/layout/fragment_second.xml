@@ -3,24 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment"
+    tools:context=".snort_acivities.SecondFragment"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical">
-<!--<TableRow-->
-<!--    android:id="@+id/row0"-->
-<!--    android:gravity="center_horizontal"-->
-<!--    >-->
-<!--    <TextView-->
-<!--        android:id="@+id/title1"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        android:fontFamily="monospace"-->
-<!--        android:text="@string/title1"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold" />-->
-<!--</TableRow>-->
+
     <TableRow
         android:id="@+id/row1"
         android:layout_width="fill_parent"
@@ -43,7 +29,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="5dp"
             android:text="Source Port"
             android:textSize="12sp" />
@@ -63,7 +49,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:padding="5dp"
-            android:text="Destination Net"
+            android:hint="Destination Net"
             android:textSize="12sp" />
 
         <EditText
@@ -71,9 +57,9 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="5dp"
-            android:text="Destination Port"
+            android:hint="Destination Port"
             android:textSize="12sp" />
     </TableRow>
     <TableRow
@@ -84,12 +70,12 @@
         android:paddingTop="20dp">
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Message"
+            android:hint="Message"
             android:textSize="14sp" />
     </TableRow>
     <TableRow
@@ -100,28 +86,28 @@
         android:paddingTop="20dp">
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/classType"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="ClassType"
+            android:hint="Class Type"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/sid"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:inputType="textPersonName"
-            android:text="SID"
+            android:inputType="number"
+            android:hint="SID"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName5"
+            android:id="@+id/priority"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Priority"
+            android:inputType="number"
+            android:hint="Priority"
             android:textSize="12sp" />
     </TableRow>
     <TableRow

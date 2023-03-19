@@ -1,8 +1,10 @@
-package com.example.snortdroid;
+package com.example.snortdroid.snort_acivities.protocol_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.snortdroid.R;
 
 public class UDPActivity extends AppCompatActivity {
 

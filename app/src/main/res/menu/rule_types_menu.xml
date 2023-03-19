@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/snort"
+    android:title="Snort" />
+
+    <item android:id="@+id/yara"
+    android:title="Yara" />
+    <item android:id="@+id/zeek"
+        android:title="Zeek" />
+</menu>
