@@ -12,7 +12,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="send">Send</string>
+    <string name="send">Add Specific details</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string-array name="icmpSpinner">
@@ -32,7 +32,46 @@
         <item>tcp</item>
         <item>udp</item>
     </string-array>
-    <string name="title_activity_yara">YaraActivity</string>
+    <string-array name="icmpMessage">
+        <item>request</item>
+        <item>reply</item>
+    </string-array>
+    <string-array name="httpMethodsSpinner">
+        <item>GET</item>
+        <item>POST</item>
+        <item>PUT</item>
+        <item>DELETE</item>
+    </string-array>
 
+    <string-array name="httpCodesSpinner">
+        <item>OK</item>
+        <item>CREATED</item>
+        <item>ACCEPTED</item>
+        <item>BAD_REQUEST</item>
+        <item>UNAUTHORIZED</item>
+        <item>FORBIDDEN</item>
+        <item>NOT_FOUND</item>
+        <item>INTERNAL_SERVER_ERROR</item>
+        <item>BAD_GATEWAY</item>
+    </string-array>
+
+    <string-array name="tcpFlags">
+        <item>FIN</item>
+        <item>SYN</item>
+        <item>PSH</item>
+        <item>RST</item>
+        <item>ACK</item>
+        <item>URG</item>
+    </string-array>
+    <string-array name="duirection">
+        <item>FROM_SERVER</item>
+        <item>TO_SERVER</item>
+        <item>TO_CLIENT</item>
+        <item>FROM_CLIENT</item>
+    </string-array>
+
+    <string name="title_activity_yara">YaraActivity</string>
     <string name="hello_first_fragment">Hello first fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

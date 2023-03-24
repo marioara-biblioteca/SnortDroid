@@ -1,6 +1,13 @@
 package com.example.snortdroid.rules;
 
+import com.example.snortdroid.rules.enums.Direction;
+import com.example.snortdroid.rules.enums.HttpMethods;
+import com.example.snortdroid.rules.enums.HttpStatusCodes;
+import com.example.snortdroid.rules.enums.TcpFlags;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SnortRule  extends Rule implements Serializable{
 
@@ -12,7 +19,21 @@ public class SnortRule  extends Rule implements Serializable{
     private int rev,sid;
     private String content;
     private int contentOffset;
-    private String ttl;
+    private int ttl;
+    private HttpMethods httpMethod;
+    private HttpStatusCodes httpStatusCode;
+    private List<TcpFlags> tcpFlagsList=new ArrayList<>();
+    private Direction direction;
+    private String msgType;
+
+    public String getMsgType() {
+        return msgType;
+    }
+
+    public void setMsgType(String msgType) {
+        this.msgType = msgType;
+    }
+
     public SnortRule() {
         super();
     }
@@ -105,11 +126,51 @@ public class SnortRule  extends Rule implements Serializable{
         this.contentOffset = contentOffset;
     }
 
-    public String getTtl() {
+    public int getTtl() {
         return ttl;
     }
 
-    public void setTtl(String ttl) {
+    public void setTtl(int ttl) {
         this.ttl = ttl;
+    }
+
+    @Override
+    public String toString() {
+        return  this.action+";"+this.protocol+";"+this.message+";"+this.sourceNet+";"+this.sourcePort+";"+this.destNet+";"+this.destPort;
+    }
+
+    public HttpMethods getHttpMethod() {
+        return httpMethod;
+    }
+
+    public void setHttpMethod(HttpMethods httpMethod) {
+        this.httpMethod = httpMethod;
+    }
+
+    public HttpStatusCodes getHttpStatusCode() {
+        return httpStatusCode;
+    }
+
+    public void setHttpStatusCode(HttpStatusCodes httpStatusCode) {
+        this.httpStatusCode = httpStatusCode;
+    }
+
+    public List<TcpFlags> getTcpFlagsList() {
+        return tcpFlagsList;
+    }
+
+    public void setTcpFlagsList(List<TcpFlags> tcpFlagsList) {
+        this.tcpFlagsList = tcpFlagsList;
+    }
+    public void addToTcpFlagsList(String flag){
+        tcpFlagsList.add(TcpFlags.valueOf(flag));
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 }

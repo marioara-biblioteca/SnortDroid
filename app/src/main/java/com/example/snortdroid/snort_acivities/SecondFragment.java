@@ -1,15 +1,20 @@
 package com.example.snortdroid.snort_acivities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.snortdroid.MainActivity;
 import com.example.snortdroid.R;
 import com.example.snortdroid.rules.SnortRule;
 
@@ -31,21 +36,31 @@ public class SecondFragment extends Fragment {
             Button sendButton = (Button) rootView.findViewById(R.id.sendSecond);
             sendButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    String srcNet = rootView.findViewById(R.id.sourceNet).toString();
-                    String destNet = rootView.findViewById(R.id.destNet).toString();
-                    String message=rootView.findViewById(R.id.message).toString();
-                    String classType=rootView.findViewById(R.id.classType).toString();
-                    rule.setSourceNet(srcNet);
-                    rule.setDestNet(destNet);
-                    rule.setMessage(message);
+                    EditText srcNet=(rootView.findViewById(R.id.sourceNet));
+                    EditText destNet = rootView.findViewById(R.id.destNet);
+                    EditText message=rootView.findViewById(R.id.message);
+                    EditText classType=rootView.findViewById(R.id.classType);
+
+                    rule.setSourceNet(srcNet.getText().toString());
+                    rule.setDestNet(destNet.getText().toString());
+                    rule.setMessage(message.getText().toString());
 
                     try {
-                        int srcPort = Integer.parseInt(rootView.findViewById(R.id.sourcePort).toString());
-                        int destPort = Integer.parseInt(rootView.findViewById(R.id.destPort).toString());
-                        int sid = Integer.parseInt(rootView.findViewById(R.id.sid).toString());
-                        rule.setSourcePort(srcPort);
-                        rule.setDestPort(destPort);
-                        rule.setSid(sid);
+                        EditText srcPort = rootView.findViewById(R.id.sourcePort);
+                        EditText destPort = rootView.findViewById(R.id.destPort);
+                        EditText sid = rootView.findViewById(R.id.sid);
+                        rule.setSourcePort(Integer.parseInt(srcPort.getText().toString()));
+                        rule.setDestPort(Integer.parseInt(destPort.getText().toString()));
+                        rule.setSid(Integer.parseInt(sid.getText().toString()));
+
+                        SharedPreferences sp=getActivity().getSharedPreferences("snortRules1", Context.MODE_PRIVATE );
+
+                        int ruleSharedPrefID=sp.getInt("ruleID",0);
+                        SharedPreferences.Editor editor=sp.edit();
+                        editor.putString(ruleSharedPrefID+"",rule.toString());
+                        ruleSharedPrefID++;
+                        editor.putInt("ruleID",ruleSharedPrefID);
+                        editor.commit();
 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
@@ -54,8 +69,17 @@ public class SecondFragment extends Fragment {
 
                 }
             });
+            Button goBack=(Button) rootView.findViewById(R.id.closeFragment2Snort);
+            goBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().finish();
+                }
+            });
+
         }
         return rootView;
 
     }
+
 }

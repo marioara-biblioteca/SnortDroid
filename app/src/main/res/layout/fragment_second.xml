@@ -21,7 +21,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:padding="5dp"
-            android:text="Source Net"
+            android:hint="Source Net"
             android:textSize="12sp" />
 
         <EditText
@@ -31,7 +31,7 @@
             android:ems="10"
             android:inputType="number"
             android:padding="5dp"
-            android:text="Source Port"
+            android:hint="Source Port"
             android:textSize="12sp" />
     </TableRow>
 
@@ -122,5 +122,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/send" />
+
+        <Button
+            android:id="@+id/closeFragment2Snort"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Back" />
     </TableRow>
+
 </TableLayout>
