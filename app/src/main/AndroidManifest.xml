@@ -12,28 +12,21 @@
         android:theme="@style/Theme.Snortdroid"
         tools:targetApi="31">
         <activity
+            android:name=".snort_acivities.RulesListViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".zeek_activities.ZeekActivity"
             android:exported="false" />
         <activity
             android:name=".snort_acivities.SnortActivity"
+            android:enableOnBackInvokedCallback="true"
             android:exported="false" />
         <activity
             android:name=".yara_activities.YaraActivity"
             android:exported="false" />
         <activity
-            android:name=".snort_acivities.protocol_activities.UDPActivity"
-            android:exported="false" />
-        <activity
-            android:name=".snort_acivities.protocol_activities.ICMPActivity"
-            android:exported="false" />
-        <activity
-            android:name=".snort_acivities.protocol_activities.TCPActivity"
-            android:exported="false" />
-        <activity
-            android:name=".snort_acivities.protocol_activities.IPActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
+            android:enableOnBackInvokedCallback="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.snortdroid.R;
@@ -42,6 +43,14 @@ public class YaraMetadataFragment extends Fragment {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+        Button close=(Button) rootView.findViewById(R.id.closeFragmentYaraStrings);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
         return rootView;
     }
 }

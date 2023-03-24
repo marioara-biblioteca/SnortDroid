@@ -47,23 +47,33 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutForTable"
+        android:id="@+id/layoutForListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal">
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
         <Button
             android:id="@+id/fromSnortToMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:text="Back To Main">
         </Button>
+
+        <ListView
+            android:id="@+id/rulesListView"
+            android:layout_width="match_parent"
+            android:divider="@color/black"
+            android:dividerHeight="2dp"
+            android:listSelector="@color/purple_200"
+            android:layout_height="match_parent" />
     </LinearLayout>
     <FrameLayout
         android:id="@+id/frameID"
