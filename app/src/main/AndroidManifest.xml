@@ -14,9 +14,7 @@
         <activity
             android:name=".snort_acivities.RulesListViewActivity"
             android:exported="false" />
-        <activity
-            android:name=".zeek_activities.ZeekActivity"
-            android:exported="false" />
+
         <activity
             android:name=".snort_acivities.SnortActivity"
             android:enableOnBackInvokedCallback="true"

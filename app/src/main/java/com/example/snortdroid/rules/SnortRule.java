@@ -6,6 +6,9 @@ import com.example.snortdroid.rules.enums.HttpStatusCodes;
 import com.example.snortdroid.rules.enums.TcpFlags;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,7 +139,9 @@ public class SnortRule  extends Rule implements Serializable{
 
     @Override
     public String toString() {
-        return  this.action+";"+this.protocol+";"+this.message+";"+this.sourceNet+";"+this.sourcePort+";"+this.destNet+";"+this.destPort;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        return  dtf.format(now)+";"+this.action+";"+this.protocol+";"+this.message+";"+this.sourceNet+";"+this.sourcePort+";"+this.destNet+";"+this.destPort;
     }
 
     public HttpMethods getHttpMethod() {

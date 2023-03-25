@@ -1,13 +1,15 @@
-package com.example.snortdroid.rules;
+package com.example.snortdroid.rules.yara;
+
+import com.example.snortdroid.rules.Rule;
 
 import java.util.*;
 
-public class YaraRule extends Rule{
+public class YaraRule extends Rule {
     private String description,author,reference,hash;
-   int score;
+    int score;
     private String date;
 
-    private List<String> strings=new ArrayList<>();
+    private List<YaraStrings> strings=new ArrayList<>();
     private List<String> condition=new ArrayList<>();
     public YaraRule() {
         super();
@@ -61,7 +63,7 @@ public class YaraRule extends Rule{
         this.date = date;
     }
 
-    public List<String> getStrings() {
+    public List<YaraStrings> getStrings() {
         return strings;
     }
 
@@ -69,8 +71,20 @@ public class YaraRule extends Rule{
         return condition;
     }
 
-    public void addString(String str){this.strings.add(str);}
+    public void addString(YaraStrings  str){this.strings.add(str);}
     public void addCondition(String cond){this.condition.add(cond);}
 
-
+    @Override
+    public String toString() {
+        return "YaraRule{" +
+                "description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", reference='" + reference + '\'' +
+                ", hash='" + hash + '\'' +
+                ", score=" + score +
+                ", date='" + date + '\'' +
+                ", strings=" + strings +
+                ", condition=" + condition +
+                '}';
+    }
 }

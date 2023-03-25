@@ -32,12 +32,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Reference" />
-    <EditText
+    <Button
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:inputType="datetime"
         android:layout_height="wrap_content"
-        android:hint="Date" />
+        android:text="Pick date" />
     <EditText
         android:id="@+id/hash"
         android:layout_width="wrap_content"
@@ -55,7 +55,12 @@
         android:id="@+id/goToAddStrings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Metadata" />
+        android:text="Add Strings" />
+    <Button
+        android:id="@+id/goToAddCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Condition" />
 
     <Button
         android:id="@+id/closeFragmentYaraStrings"

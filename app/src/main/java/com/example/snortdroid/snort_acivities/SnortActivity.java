@@ -2,7 +2,10 @@ package com.example.snortdroid.snort_acivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
@@ -24,6 +28,7 @@ import com.example.snortdroid.rules.SnortRule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class SnortActivity extends AppCompatActivity {
@@ -32,6 +37,7 @@ public class SnortActivity extends AppCompatActivity {
         SnortRule snortRule=new SnortRule();
         String[]parameters=serializedRule.split(";");
         //        return  this.action+";"+this.protocol+";"+this.message+";"+this.sourceNet+";"+this.sourcePort+";"+this.destNet+";"+this.destPort;
+
         snortRule.setAction(parameters[0]);
         snortRule.setProtocol(parameters[1]);
         snortRule.setMessage(parameters[2]);
@@ -61,24 +67,58 @@ public class SnortActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferences sp=getSharedPreferences("snortRules1", MODE_PRIVATE);
+
+                int img=R.drawable.info1;
                 List<String> rules=new ArrayList<>();
-                int img;
+               final List<String> selectedRules=new ArrayList<>();
                 for(int i=0;i<sp.getInt("ruleID",0);i++){
                     String rule=sp.getString(i+"","").toString();
                     SnortRule snortRule=deserializeSnortRule(rule);
                     rules.add(rule);
                     //TODO create rule from serialized string and create Adapter of "SnortRule" object
                 }
+                new AlertDialog.Builder(SnortActivity.this)
+                        .setTitle("Date range")
+                        .setMessage("Choose date range in which rule was added to the system:")
+                        .setPositiveButton("Select", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                final Calendar c = Calendar.getInstance();
+                                DatePickerDialog dpd = new DatePickerDialog(SnortActivity.this,
+                                        new DatePickerDialog.OnDateSetListener() {
+                                            @Override
+                                            public void onDateSet(DatePicker view, int year,
+                                                                  int monthOfYear, int dayOfMonth) {
+                                                //get all dates after selcted date
+                                                for(String rule:rules){
+                                                    String date=rule.split(";")[0];
+                                                    int selectedYear=Integer.parseInt(date.split("/")[0]);
+                                                    int selectedMonth=Integer.parseInt(date.split("/")[1]);
+                                                    int selectedDay= Integer.parseInt(date.split("/")[2]);
+                                                    if(selectedDay==dayOfMonth && year==selectedYear &&  selectedMonth==monthOfYear ){
+                                                        selectedRules.add(rule);
+                                                    }
+                                                }
 
-                img=R.drawable.info1;
-
-                CustomRuleAdapter rulesAdapter=new CustomRuleAdapter(SnortActivity.this, Arrays.copyOf(
+                                            }
+                                        }, c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE));
+                                dpd.show();
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .setIcon(android.R.drawable.ic_menu_my_calendar)
+                        .show();
+                CustomRuleAdapter rulesAdapter;
+                if(selectedRules.size()!=0)
+                    rulesAdapter=new CustomRuleAdapter(SnortActivity.this, Arrays.copyOf(
+                        selectedRules.toArray(), selectedRules.size(), String[].class),img);
+                else rulesAdapter=new CustomRuleAdapter(SnortActivity.this, Arrays.copyOf(
                         rules.toArray(), rules.size(), String[].class),img);
                 rulesListView.setAdapter(rulesAdapter);
                 rulesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String r=rules.get(i);
+                        //String r=selectedRules.get(i);
+                        String r =rules.get(i);
                         Toast.makeText(SnortActivity.this,r, Toast.LENGTH_SHORT).show();
                     }
                 });

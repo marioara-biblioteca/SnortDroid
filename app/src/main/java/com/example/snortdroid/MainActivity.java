@@ -11,7 +11,6 @@ import android.view.MenuItem;
 
 import com.example.snortdroid.snort_acivities.SnortActivity;
 import com.example.snortdroid.yara_activities.YaraActivity;
-import com.example.snortdroid.zeek_activities.ZeekActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,11 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             }
-            case R.id.zeek:{
-                Intent intent = new Intent(this, ZeekActivity.class);
-                startActivity(intent);
-                break;
-            }
+
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -5,6 +5,5 @@
 
     <item android:id="@+id/yara"
     android:title="Yara" />
-    <item android:id="@+id/zeek"
-        android:title="Zeek" />
+
 </menu>
