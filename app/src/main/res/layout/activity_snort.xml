@@ -46,16 +46,10 @@
             android:text="Show Snort Rules" />
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/layoutForListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:gravity="center_horizontal">
@@ -74,7 +68,9 @@
             android:dividerHeight="2dp"
             android:listSelector="@color/purple_200"
             android:layout_height="match_parent" />
+
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/frameID"
         android:layout_width="match_parent"
