@@ -160,17 +160,7 @@ public class YaraMetadataFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         yaraRule.addCondition(condition.getText().toString());
                         //TODO same problem with text editor
-                        int ruleNum;
-                        SharedPreferences sp=getActivity().getSharedPreferences("yaraRules", Context.MODE_PRIVATE );
-                        if(!sp.contains("ruleNum"))
-                           ruleNum=0;
-                        else
-                            ruleNum=sp.getInt("ruleNum",0);
 
-                        SharedPreferences.Editor editor=sp.edit();
-                        editor.putInt("ruleNum",ruleNum++);
-                        editor.putString(""+ruleNum,yaraRule.toString());
-                        editor.commit();
                     }
                 });
                 alertDialog.setNegativeButton("Close", new DialogInterface.OnClickListener() {

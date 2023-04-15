@@ -2,35 +2,26 @@ package com.example.snortdroid.snort_acivities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.InputType;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.example.snortdroid.rules.Rule;
-import com.example.snortdroid.rules.SnortRule;
+import com.example.snortdroid.rules.snort.SnortRule;
 import com.example.snortdroid.R;
 import com.example.snortdroid.rules.enums.Direction;
 import com.example.snortdroid.rules.enums.HttpMethods;
 import com.example.snortdroid.rules.enums.HttpStatusCodes;
-import com.example.snortdroid.rules.enums.TcpFlags;
 
 import java.util.ArrayList;
 import java.util.List;

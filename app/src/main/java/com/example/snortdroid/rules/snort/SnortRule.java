@@ -1,5 +1,9 @@
-package com.example.snortdroid.rules;
+package com.example.snortdroid.rules.snort;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.example.snortdroid.rules.Rule;
 import com.example.snortdroid.rules.enums.Direction;
 import com.example.snortdroid.rules.enums.HttpMethods;
 import com.example.snortdroid.rules.enums.HttpStatusCodes;
@@ -9,11 +13,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class SnortRule  extends Rule implements Serializable{
-
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String action;
     private String protocol;
     private String sourceNet,destNet;
@@ -28,6 +35,7 @@ public class SnortRule  extends Rule implements Serializable{
     private List<TcpFlags> tcpFlagsList=new ArrayList<>();
     private Direction direction;
     private String msgType;
+    private LocalDateTime timestamp;
 
     public String getMsgType() {
         return msgType;
@@ -39,6 +47,25 @@ public class SnortRule  extends Rule implements Serializable{
 
     public SnortRule() {
         super();
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public SnortRule(String action, String protocol, String sourceNet, String destNet, int sourcePort, int destPort, String message, int rev, int sid) {
+        super();
+
+        this.timestamp=LocalDateTime.now();
+        this.action = action;
+        this.protocol = protocol;
+        this.sourceNet = sourceNet;
+        this.destNet = destNet;
+        this.sourcePort = sourcePort;
+        this.destPort = destPort;
+        this.message = message;
+        this.rev = rev;
+        this.sid = sid;
     }
 
     public String getAction() {

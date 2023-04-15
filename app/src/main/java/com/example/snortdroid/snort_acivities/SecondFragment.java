@@ -1,22 +1,17 @@
 package com.example.snortdroid.snort_acivities;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.snortdroid.MainActivity;
 import com.example.snortdroid.R;
-import com.example.snortdroid.rules.SnortRule;
+import com.example.snortdroid.rules.snort.SnortRule;
 
 public class SecondFragment extends Fragment {
     private SnortRule rule;
@@ -53,14 +48,7 @@ public class SecondFragment extends Fragment {
                         rule.setDestPort(Integer.parseInt(destPort.getText().toString()));
                         rule.setSid(Integer.parseInt(sid.getText().toString()));
 
-                        SharedPreferences sp=getActivity().getSharedPreferences("snortRules1", Context.MODE_PRIVATE );
 
-                        int ruleSharedPrefID=sp.getInt("ruleID",0);
-                        SharedPreferences.Editor editor=sp.edit();
-                        editor.putString(ruleSharedPrefID+"",rule.toString());
-                        ruleSharedPrefID++;
-                        editor.putInt("ruleID",ruleSharedPrefID);
-                        editor.commit();
 
                     }catch (Exception e){
                         System.out.println(e.getMessage());

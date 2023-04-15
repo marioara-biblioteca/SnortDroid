@@ -10,13 +10,15 @@ import android.widget.TextView;
 
 import com.example.snortdroid.R;
 
+import java.util.List;
+
 public class CustomRuleAdapter extends BaseAdapter {
     private Context context;
-    private String[]rules;
+    private List<String> rules;
     private int image;
     private LayoutInflater layoutInflater;
 
-    public CustomRuleAdapter(Context context, String[] rules, int image) {
+    public CustomRuleAdapter(Context context, List<String> rules, int image) {
         this.context = context;
         this.rules = rules;
         this.image = image;
@@ -25,7 +27,7 @@ public class CustomRuleAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return rules.length;
+        return rules.size();
     }
 
     @Override
@@ -43,7 +45,7 @@ public class CustomRuleAdapter extends BaseAdapter {
         view=layoutInflater.inflate(R.layout.activity_rules_list_view,null);
         TextView ruleTv=(TextView) view.findViewById(R.id.rulesTextView);
         ImageView ruleImg=(ImageView) view.findViewById(R.id.rulesInfoIcon);
-        ruleTv.setText(rules[i]);
+        ruleTv.setText(rules.get(i));
         ruleImg.setImageResource(image);
         return view;
     }
