@@ -29,7 +29,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
             android:padding="5dp"
             android:hint="Source Port"
             android:textSize="12sp" />
@@ -57,7 +56,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
             android:padding="5dp"
             android:hint="Destination Port"
             android:textSize="12sp" />
@@ -98,7 +96,6 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:inputType="number"
             android:hint="SID"
             android:textSize="12sp" />
 
@@ -106,7 +103,6 @@
             android:id="@+id/priority"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:hint="Priority"
             android:textSize="12sp" />
     </TableRow>

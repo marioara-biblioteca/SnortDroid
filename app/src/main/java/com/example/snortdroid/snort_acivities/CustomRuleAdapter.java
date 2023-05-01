@@ -9,16 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.snortdroid.R;
+import com.example.snortdroid.rules.snort.SnortRule;
 
 import java.util.List;
 
 public class CustomRuleAdapter extends BaseAdapter {
     private Context context;
-    private List<String> rules;
+    private List<SnortRule> rules;
     private int image;
     private LayoutInflater layoutInflater;
 
-    public CustomRuleAdapter(Context context, List<String> rules, int image) {
+    public CustomRuleAdapter(Context context, List<SnortRule> rules, int image) {
         this.context = context;
         this.rules = rules;
         this.image = image;
@@ -45,7 +46,7 @@ public class CustomRuleAdapter extends BaseAdapter {
         view=layoutInflater.inflate(R.layout.activity_rules_list_view,null);
         TextView ruleTv=(TextView) view.findViewById(R.id.rulesTextView);
         ImageView ruleImg=(ImageView) view.findViewById(R.id.rulesInfoIcon);
-        ruleTv.setText(rules.get(i));
+        ruleTv.setText(rules.get(i).toString());
         ruleImg.setImageResource(image);
         return view;
     }

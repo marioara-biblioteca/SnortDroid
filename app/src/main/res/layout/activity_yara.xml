@@ -34,6 +34,23 @@
         android:text="Back To Main" />
 
 </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ListView
+            android:id="@+id/rulesListViewYara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/black"
+            android:dividerHeight="2dp"
+            android:listSelector="@color/purple_200"
+            />
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/frameYaraID"
         android:layout_width="match_parent"

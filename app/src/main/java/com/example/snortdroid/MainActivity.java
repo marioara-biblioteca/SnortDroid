@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.snortdroid.cyber_news.MainActivityJson;
 import com.example.snortdroid.snort_acivities.SnortActivity;
 import com.example.snortdroid.yara_activities.YaraActivity;
 
@@ -28,7 +29,17 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor=getSharedPreferences("envVars",MODE_PRIVATE).edit();
                 editor.putString("$HOME_NET","192.168.0.0/24");
                 editor.putString("$EXTERNAL_NET","!HOME_NET");
+                editor.putInt("sid",(100000-1));
                 editor.commit();
+            }
+        });
+        Button goToCyberNews=findViewById(R.id.goToNews);
+        goToCyberNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, MainActivityJson.class);
+                startActivity(intent);
+
             }
         });
     }

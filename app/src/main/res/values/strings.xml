@@ -26,6 +26,7 @@
         <item>reject</item>
         <item>drop</item>
     </string-array>
+
     <string-array name="protoSpinner">
         <item>icmp</item>
         <item>ip</item>
@@ -54,7 +55,9 @@
         <item>INTERNAL_SERVER_ERROR</item>
         <item>BAD_GATEWAY</item>
     </string-array>
-
+    <string name="apiKeyMaps">
+    AIzaSyBgIFY2wwKPNA-1s0mKQsZ31u2PGY8tJHg
+</string>
     <string-array name="tcpFlags">
         <item>FIN</item>
         <item>SYN</item>
@@ -63,7 +66,7 @@
         <item>ACK</item>
         <item>URG</item>
     </string-array>
-    <string-array name="duirection">
+    <string-array name="direction">
         <item>FROM_SERVER</item>
         <item>TO_SERVER</item>
         <item>TO_CLIENT</item>
@@ -77,10 +80,18 @@
         <item>halfword ascii</item>
         <item>halfword octetstream</item>
     </string-array>
-
+    <string-array name="apiNews">
+        <item>threatpost</item>
+        <item>guardian</item>
+        <item>abc</item>
+        <item>latimes</item>
+        <item>bbc</item>
+        <item>wired</item>
+    </string-array>
 
     <string name="title_activity_yara">YaraActivity</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

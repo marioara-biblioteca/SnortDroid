@@ -25,6 +25,7 @@ import com.example.snortdroid.R;
 import com.example.snortdroid.rules.yara.YaraRule;
 import com.example.snortdroid.rules.yara.YaraStrings;
 
+import java.sql.SQLOutput;
 import java.util.Calendar;
 
 
@@ -49,10 +50,7 @@ public class YaraMetadataFragment extends Fragment {
         Button date=(Button) rootView.findViewById(R.id.date);
         EditText hash=(EditText) rootView.findViewById(R.id.hash);
         try {
-            yaraRule.setDescription(desc.getText().toString());
-            yaraRule.setAuthor(author.getText().toString());
-            yaraRule.setReference(reference.getText().toString());
-            yaraRule.setHash(hash.getText().toString());
+
             date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -77,7 +75,6 @@ public class YaraMetadataFragment extends Fragment {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-        ////////////////////////////////////////STRINGS///////////////////////////////////////////////////////////
         Button addStrings=(Button)rootView.findViewById(R.id.goToAddStrings);
         addStrings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +94,7 @@ public class YaraMetadataFragment extends Fragment {
                 paramName.setHint("Param name: $");
                 EditText paramValue=new EditText(getContext());
                 paramValue.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-                paramValue.setHint("Param Hint:");
+                paramValue.setHint("Param value: $");
                 Spinner sizeTypesSpinner=new Spinner(getContext());
                 ArrayAdapter<CharSequence> wordSizes = ArrayAdapter.createFromResource(getContext(),R.array.wordSize, android.R.layout.simple_spinner_dropdown_item );
                 wordSizes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -119,9 +116,9 @@ public class YaraMetadataFragment extends Fragment {
                 });
                 alertDialog.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        yaraRule.addString(new YaraStrings(paramName.getText().toString(),
+                    public void onClick(DialogInterface dialogInterface, int i) {yaraRule.addString(new YaraStrings(paramName.getText().toString(),
                                 paramValue.getText().toString(),size));
+                        System.out.println(yaraRule);
                     }
                 });
                 alertDialog.setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -134,8 +131,8 @@ public class YaraMetadataFragment extends Fragment {
 
             }
         });
-////////////////////////////////////CONDITION/////////////////////////////////
-        Button addCond=(Button)rootView.findViewById(R.id.goToAddCondition);
+
+       /* Button addCond=(Button)rootView.findViewById(R.id.goToAddCondition);
         addCond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,11 +170,16 @@ public class YaraMetadataFragment extends Fragment {
 
             }
         });
-
+*/
         Button close=(Button) rootView.findViewById(R.id.closeFragmentYaraStrings);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yaraRule.setDescription(desc.getText().toString());
+                yaraRule.setAuthor(author.getText().toString());
+                yaraRule.setReference(reference.getText().toString());
+                yaraRule.setHash(hash.getText().toString());
+                YaraActivity.yaraDatabase.yaraRuleDAO().insertYaraRule(yaraRule);
                 getActivity().finish();
             }
         });

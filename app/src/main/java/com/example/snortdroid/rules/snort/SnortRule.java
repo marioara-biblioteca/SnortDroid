@@ -1,5 +1,7 @@
 package com.example.snortdroid.rules.snort;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -21,42 +23,58 @@ import java.util.List;
 public class SnortRule  extends Rule implements Serializable{
     @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name="action")
+    @NonNull
     private String action;
+    @ColumnInfo(name="protocol")
+    @NonNull
     private String protocol;
-    private String sourceNet,destNet;
-    private int sourcePort,destPort;
+    @ColumnInfo(name="source_net")
+    private String sourceNet;
+    @ColumnInfo(name="destination_net")
+    private String destNet;
+    @ColumnInfo(name="source_port")
+    private int sourcePort;
+    @ColumnInfo(name="dest_port")
+    private int destPort;
+    @ColumnInfo(name="timestamp")
+    private String timestamp;
+    @ColumnInfo(name="payload")
+    private String payload;
     private String message;
     private int rev,sid;
     private String content;
     private int contentOffset;
-    private int ttl;
+
     private HttpMethods httpMethod;
     private HttpStatusCodes httpStatusCode;
-    private List<TcpFlags> tcpFlagsList=new ArrayList<>();
+    private String tcpFlagsList;
     private Direction direction;
-    private String msgType;
-    private LocalDateTime timestamp;
+    private int ttl;
 
-    public String getMsgType() {
-        return msgType;
+    public int getTtl() {
+        return ttl;
     }
 
-    public void setMsgType(String msgType) {
-        this.msgType = msgType;
+    public void setTtl(int ttl) {
+        this.ttl = ttl;
     }
 
     public SnortRule() {
         super();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        this.timestamp=dtf.format(LocalDateTime.now());
     }
 
-    public LocalDateTime getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
     public SnortRule(String action, String protocol, String sourceNet, String destNet, int sourcePort, int destPort, String message, int rev, int sid) {
         super();
 
-        this.timestamp=LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        this.timestamp=dtf.format(LocalDateTime.now());
         this.action = action;
         this.protocol = protocol;
         this.sourceNet = sourceNet;
@@ -156,21 +174,6 @@ public class SnortRule  extends Rule implements Serializable{
         this.contentOffset = contentOffset;
     }
 
-    public int getTtl() {
-        return ttl;
-    }
-
-    public void setTtl(int ttl) {
-        this.ttl = ttl;
-    }
-
-    @Override
-    public String toString() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDateTime now = LocalDateTime.now();
-        return  dtf.format(now)+";"+this.action+";"+this.protocol+";"+this.message+";"+this.sourceNet+";"+this.sourcePort+";"+this.destNet+";"+this.destPort;
-    }
-
     public HttpMethods getHttpMethod() {
         return httpMethod;
     }
@@ -183,26 +186,50 @@ public class SnortRule  extends Rule implements Serializable{
         return httpStatusCode;
     }
 
-    public void setHttpStatusCode(HttpStatusCodes httpStatusCode) {
-        this.httpStatusCode = httpStatusCode;
-    }
+    public void setHttpStatusCode(HttpStatusCodes httpStatusCode) {this.httpStatusCode = httpStatusCode;}
 
-    public List<TcpFlags> getTcpFlagsList() {
+    public String getTcpFlagsList() {
         return tcpFlagsList;
     }
 
-    public void setTcpFlagsList(List<TcpFlags> tcpFlagsList) {
+    public void setTcpFlagsList(String tcpFlagsList) {
         this.tcpFlagsList = tcpFlagsList;
     }
     public void addToTcpFlagsList(String flag){
-        tcpFlagsList.add(TcpFlags.valueOf(flag));
+        if(!tcpFlagsList.contains(flag))
+            tcpFlagsList+=flag;
     }
-
     public Direction getDirection() {
         return direction;
     }
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+    public String getPayload(){
+
+        payload= "(msg:" +message+";content:\"|"+content+"|\";offset:"+contentOffset+";flow:"+direction+"flags:"+tcpFlagsList+  ";sid:" +sid+";rev:"+rev+";)";
+        return payload;
+    }
+    @Override
+    public String toString() {
+        return  timestamp+" "+ action+" "+protocol+" "+sourceNet+" "+sourcePort+" -> "+destNet+" "+destPort+" "+getPayload();
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setPayload(String payload) {
+        this.payload = payload;
     }
 }

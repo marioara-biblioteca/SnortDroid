@@ -51,6 +51,7 @@
             android:id="@+id/rev"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+
             android:hint="rev"
             android:paddingTop="50dp"
             android:textSize="14sp" />

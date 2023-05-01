@@ -6,9 +6,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -36,30 +38,30 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Spinner action,protocol;
-        EditText rev;
-        Button btn;
+        Spinner actionSpinner,protocolSpinner;
+        Button sendToFirstFrag;
 
         View rootView= inflater.inflate(R.layout.fragment_first, container, false);
 
-        action=rootView.findViewById(R.id.action);
-        protocol=rootView.findViewById(R.id.protocol);
-        rev=rootView.findViewById(R.id.rev);
+        actionSpinner=rootView.findViewById(R.id.action);
+        protocolSpinner=rootView.findViewById(R.id.protocol);
+
 
         ArrayAdapter<CharSequence> actionAdapter = ArrayAdapter.createFromResource(getContext(),R.array.actionSpinner, android.R.layout.simple_spinner_dropdown_item );
         actionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        action.setAdapter(actionAdapter);
-        action.setOnItemSelectedListener(new ActionSpinnerClass());
+        actionSpinner.setAdapter(actionAdapter);
+        actionSpinner.setOnItemSelectedListener(new ActionSpinnerClass());
 
         ArrayAdapter<CharSequence> protocolAdapter = ArrayAdapter.createFromResource(getContext(), R.array.protoSpinner,android.R.layout.simple_spinner_dropdown_item );
         protocolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        protocol.setAdapter(protocolAdapter);
-        protocol.setOnItemSelectedListener(new ProtocolSpinnerClass());
+        protocolSpinner.setAdapter(protocolAdapter);
+        protocolSpinner.setOnItemSelectedListener(new ProtocolSpinnerClass());
 
+        sendToFirstFrag = (Button)rootView.findViewById(R.id.sendFirst);
 
-        btn = (Button)rootView.findViewById(R.id.sendFirst);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        EditText ttlText = new EditText(getContext());
+        ttlText.setId(R.id.my_edit_text_1);
+        sendToFirstFrag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -86,7 +88,7 @@ public class FirstFragment extends Fragment {
                             @Override
                             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                                 String icmp=(String) adapterView.getItemAtPosition(i);
-                                rule.setMsgType(icmp);
+                                rule.setProtocol(icmp);
                             }
 
                             @Override
@@ -103,21 +105,9 @@ public class FirstFragment extends Fragment {
                         alertDialog.setTitle("IP");
                         alertDialog.setMessage("Enter ttl:");
 
-//                        EditText ttlText = new EditText(getContext());
-//                        ttlText.setInputType(InputType.TYPE_CLASS_NUMBER);
-//                        ttlText.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//                        alertDialog.setView(ttlText);
-//                        ttlText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//                            @Override
-//                            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-//                                System.out.println("heereeeeee "+i);
-//                                if(i==EditorInfo.IME_ACTION_DONE) {
-//                                    rule.setTtl(Integer.parseInt(ttlText.getText().toString()));
-//                                    return true;
-//                                }
-//                                return false;
-//                            }
-//                        });
+
+                        alertDialog.setView(ttlText);
+//
 
                         break;
                     case 2:
@@ -143,11 +133,6 @@ public class FirstFragment extends Fragment {
                         httpCode.setAdapter(httpCodeAdapter);
                         httpCode.setOnItemSelectedListener(new HttpCodeSpinnerClass());
 
-                        Spinner direction=new Spinner(getContext());
-                        ArrayAdapter<CharSequence> directionAdapter = ArrayAdapter.createFromResource(getContext(),R.array.duirection, android.R.layout.simple_spinner_dropdown_item );
-                        directionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        direction.setAdapter(directionAdapter);
-                        direction.setOnItemSelectedListener(new HttpCodeSpinnerClass());
 
                         layout1.addView(httpMethods);
                         layout1.addView(httpCode);
@@ -165,7 +150,6 @@ public class FirstFragment extends Fragment {
                                 rule.addToTcpFlagsList(cb.getText().toString());
                         }
 
-
                         layoutMain.addView(layout1);
                         layoutMain.addView(layout2);
 
@@ -175,16 +159,27 @@ public class FirstFragment extends Fragment {
 
                         alertDialog=new AlertDialog.Builder(getContext());
                         alertDialog.setTitle("UDP");
+                        LinearLayout layout3 = new LinearLayout(getContext());
+                        Spinner directionSp=new Spinner(getContext());
+                        ArrayAdapter<CharSequence> directionAdapter = ArrayAdapter.createFromResource(getContext(),R.array.direction, android.R.layout.simple_spinner_dropdown_item );
+                        directionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        directionSp.setAdapter(directionAdapter);
+                        directionSp.setOnItemSelectedListener(new DirectionSpinnerClass());
+                        layout3.addView(directionSp);
+                        alertDialog.setView(layout3);
 
                         break;
                     default:
                         alertDialog=null;
-                      break;
+                        break;
 
                 }
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if(flag==1){
+                            rule.setTtl(Integer.parseInt(ttlText.getText().toString()));
+                        }
                         Bundle bundle=new Bundle();
                         bundle.putSerializable("snortRule",rule);
                         SecondFragment secondFragment=new SecondFragment();

@@ -32,7 +32,6 @@
             android:text="@string/button1"
             android:onClick="goToFragment1"/>
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -40,10 +39,18 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
         <Button
+            android:id="@+id/insertRules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Insert Rules"
+            />
+        <Button
             android:id="@+id/showRules"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show Snort Rules" />
+
     </LinearLayout>
 
 
@@ -53,22 +60,30 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         android:gravity="center_horizontal">
+
+        <ListView
+            android:id="@+id/rulesListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/black"
+            android:dividerHeight="2dp"
+            android:listSelector="@color/purple_200"
+             />
         <Button
             android:id="@+id/fromSnortToMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginRight="20dp"
             android:text="Back To Main">
         </Button>
-
-        <ListView
-            android:id="@+id/rulesListView"
-            android:layout_width="match_parent"
-            android:divider="@color/black"
-            android:dividerHeight="2dp"
-            android:listSelector="@color/purple_200"
-            android:layout_height="match_parent" />
-
+        <Button
+            android:id="@+id/showStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Show Statistics">
+        </Button>
     </LinearLayout>
 
     <FrameLayout

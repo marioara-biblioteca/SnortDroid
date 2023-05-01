@@ -3,6 +3,7 @@ package com.example.snortdroid.snort_acivities;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,22 @@ import android.widget.EditText;
 
 import com.example.snortdroid.R;
 import com.example.snortdroid.rules.snort.SnortRule;
+import com.example.snortdroid.rules.snort.SnortRuleDb;
 
 public class SecondFragment extends Fragment {
     private SnortRule rule;
+
     public SecondFragment() {
-        // Required empty public constructor
+        //  empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.fragment_second, container, false);
+
+
 
         if(getArguments()!=null) {
             rule = getArguments().getSerializable("snortRule", SnortRule.class);
@@ -34,7 +40,6 @@ public class SecondFragment extends Fragment {
                     EditText srcNet=(rootView.findViewById(R.id.sourceNet));
                     EditText destNet = rootView.findViewById(R.id.destNet);
                     EditText message=rootView.findViewById(R.id.message);
-                    EditText classType=rootView.findViewById(R.id.classType);
 
                     rule.setSourceNet(srcNet.getText().toString());
                     rule.setDestNet(destNet.getText().toString());
@@ -48,6 +53,7 @@ public class SecondFragment extends Fragment {
                         rule.setDestPort(Integer.parseInt(destPort.getText().toString()));
                         rule.setSid(Integer.parseInt(sid.getText().toString()));
 
+                        SnortActivity.snortDatabase.snortRuleDAO().insertSnortRule(rule);
 
 
                     }catch (Exception e){
