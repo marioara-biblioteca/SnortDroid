@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.snortdroid.R;
 import com.example.snortdroid.rules.yara.YaraRule;
 import com.example.snortdroid.rules.yara.YaraRuleDb;
-import com.example.snortdroid.snort_acivities.CustomRuleAdapter;
+import com.example.snortdroid.yara_activities.CustomRuleActivity;
 import com.example.snortdroid.snort_acivities.SnortActivity;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class YaraActivity extends AppCompatActivity {
         ).allowMainThreadQueries().build();
 
         List<YaraRule> yaraRuleList=yaraDatabase.yaraRuleDAO().getAllYaraRules();
-       CustomRuleAdapter rulesAdapter =new CustomRuleAdapter(YaraActivity.this, yaraRuleList,R.drawable.info1);
+       CustomRuleActivity rulesAdapter =new CustomRuleActivity(YaraActivity.this, yaraRuleList,R.drawable.info1);
         ListView rulesListView=findViewById(R.id.rulesListViewYara) ;
        rulesListView.setAdapter(rulesAdapter);
         rulesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
