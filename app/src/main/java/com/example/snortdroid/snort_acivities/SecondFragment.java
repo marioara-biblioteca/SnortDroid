@@ -27,8 +27,10 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.fragment_second, container, false);
-
-
+        EditText srcNet=(rootView.findViewById(R.id.sourceNet));
+        EditText destNet = rootView.findViewById(R.id.destNet);
+        srcNet.setText(SnortActivity.homeNet);
+        destNet.setText(SnortActivity.externalNet);
 
         if(getArguments()!=null) {
             rule = getArguments().getSerializable("snortRule", SnortRule.class);
@@ -37,8 +39,7 @@ public class SecondFragment extends Fragment {
             Button sendButton = (Button) rootView.findViewById(R.id.sendSecond);
             sendButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    EditText srcNet=(rootView.findViewById(R.id.sourceNet));
-                    EditText destNet = rootView.findViewById(R.id.destNet);
+
                     EditText message=rootView.findViewById(R.id.message);
 
                     rule.setSourceNet(srcNet.getText().toString());
@@ -54,7 +55,7 @@ public class SecondFragment extends Fragment {
                         rule.setSid(Integer.parseInt(sid.getText().toString()));
 
                         SnortActivity.snortDatabase.snortRuleDAO().insertSnortRule(rule);
-
+                        getActivity().finish();
 
                     }catch (Exception e){
                         System.out.println(e.getMessage());

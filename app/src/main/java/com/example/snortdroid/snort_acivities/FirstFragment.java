@@ -246,7 +246,7 @@ public class FirstFragment extends Fragment {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             String actionStr=(String) adapterView.getItemAtPosition(i);
-            rule.setAction(actionStr);
+            rule.setAction(actionStr.toUpperCase());
         }
 
         @Override

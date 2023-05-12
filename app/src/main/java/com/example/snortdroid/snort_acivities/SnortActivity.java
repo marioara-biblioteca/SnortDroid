@@ -32,8 +32,8 @@ import java.util.List;
 
 
 public class SnortActivity extends AppCompatActivity {
-    private String homeNet;
-    private String externalNet;
+    public static String homeNet;
+    public static String externalNet;
     private int lastSid;
     private CustomRuleAdapter rulesAdapter ;
     public  static SnortRuleDb snortDatabase;
@@ -57,7 +57,7 @@ public class SnortActivity extends AppCompatActivity {
         snortDatabase=Room.databaseBuilder(
                 SnortActivity.this,
                 SnortRuleDb.class,
-                "SnortDatabase"
+                "snortDB1"
         ).allowMainThreadQueries().build();;
 
         getSharedPreferences();

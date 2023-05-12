@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.snortdroid.R;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -45,11 +46,15 @@ public class MainActivityChart extends AppCompatActivity {
         pieDataSet.setValueTextColor(Color.WHITE);
         pieDataSet.setValueTextSize(10f);
         pieDataSet.setSliceSpace(5f);
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
     }
     private void getEntries(List<Float> values) {
         pieEntries = new ArrayList<>();
         for (int i=0;i<values.size();i++)
             pieEntries.add(new PieEntry((float)values.get(i),i));
+
 
     }
 }
