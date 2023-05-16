@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.snortdroid.MainActivity;
 import com.example.snortdroid.R;
 import com.example.snortdroid.chart.MainActivityChart;
 import com.example.snortdroid.rules.enums.Protocol;
@@ -164,7 +165,8 @@ public class SnortActivity extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent =new Intent(SnortActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

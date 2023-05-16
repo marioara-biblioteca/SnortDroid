@@ -2,10 +2,14 @@ package com.example.snortdroid.chart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.snortdroid.R;
+import com.example.snortdroid.snort_acivities.SnortActivity;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -49,6 +53,15 @@ public class MainActivityChart extends AppCompatActivity {
         Legend legend = pieChart.getLegend();
         legend.setForm(Legend.LegendForm.CIRCLE);
         legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+
+        Button back =findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivityChart.this, SnortActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void getEntries(List<Float> values) {
         pieEntries = new ArrayList<>();
